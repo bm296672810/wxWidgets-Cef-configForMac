@@ -1,0 +1,38 @@
+Creating Xcode projects for wxWidgets applications:
+https://wiki.wxwidgets.org/Creating_Xcode_projects_for_wxWidgets_applications
+
+xcode报错处理
+http://blog.csdn.net/han63504/article/details/25300195
+
+wx库编译时加这些参数：
+../configure --with-cocoa --without-subdirs --with-macosx-version-min=10.9 --with-macosx-sdk=/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.12.sdk CXXFLAGS="-stdlib=libc++ -std=c++11" OBJCXXFLAGS="-stdlib=libc++ -std=c++11" CPPFLAGS="-stdlib=libc++ -D__ASSERT_MACROS_DEFINE_VERSIONS_WITHOUT_UNDERSCORES=1" LDFLAGS="-stdlib=libc++" CXX=clang++ CXXCPP="clang++ -E" CC=clang CPP="clang -E" --enable-debug --disable-shared --without-liblzma
+error <type_traits> not found
+
+
+-framework WebKit -framework IOKit -framework Carbon -framework Cocoa -framework AudioToolbox -framework OpenGL -framework AVFoundation -framework CoreMedia -framework Security -weak_framework AVKit
+
+
+my program compiled error on wx/buffer.h 
+
+Hi,
+My wx program runs well under Windows and is currently being ported to MacOs, and the MacOs version is 10.12, IDE: XCode, but when compiled under the Mac, it is incorrectly reported in wx/buffer
+
+
+Thank you for reminding me that I followed the configuration on the wiki and configured the 'minimal' sample before I started porting my own program.
+
+First,the "minimal" sample run ok,and the other xcode project I created using the source code of 'minimal' is working properly.
+
+The following is the output of wx-config:
+$ wx-config --libs
+-L/usr/local/lib   -framework IOKit -framework Carbon -framework Cocoa -framework AudioToolbox -framework System -framework OpenGL -lwx_osx_cocoau_xrc-3.1 -lwx_osx_cocoau_html-3.1 -lwx_osx_cocoau_qa-3.1 -lwx_osx_cocoau_adv-3.1 -lwx_osx_cocoau_core-3.1 -lwx_baseu_xml-3.1 -lwx_baseu_net-3.1 -lwx_baseu-3.1
+
+wx-config --cxxflags
+-I/usr/local/lib/wx/include/osx_cocoa-unicode-3.1 -I/usr/local/include/wx-3.1 -D_FILE_OFFSET_BITS=64 -DWXUSINGDLL -D__WXMAC__ -D__WXOSX__ -D__WXOSX_COCOA__ 
+
+These drawings are a screenshot of my xcode project c++flags and header files.
+
+I really don't know what the problem is？
+
+duplicate symbol _m_ServerInfo in:
+    /Users/eims/Library/Developer/Xcode/DerivedData/MailCloud-diwnrqjahytexzddbrdnxnroouvc/Build/Intermediates/MailCloud.build/Debug/MailCloud.build/Objects-normal/x86_64/ManualSetup.o
+    /Users/eims/Library/Developer/Xcode/DerivedData/MailCloud-diwnrqjahytexzddbrdnxnroouvc/Build/Intermediates/MailCloud.build/Debug/MailCloud.build/Objects-normal/x86_64/myTreeCtrl.o

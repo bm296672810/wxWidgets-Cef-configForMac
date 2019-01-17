@@ -1,0 +1,5 @@
+1. 添加一个自定义设置 CEFROOT 填上cef的根目录
+2. Framework Search Paths 设置成$(CEFROOT)/Debug or $(CEFROOT)/Release
+3. Header Search Paths 添加$(CEFROOT)/include
+4. Library Search Paths 添加$(CEFROOT)/build_mac/libcef_dll_wrapper/Debug or $(CEFROOT)/build_mac/libcef_dll_wrapper/Release  其中build_mac 是cmake生成cef的xcode项目的输出路径
+5. Run search path 添加 @executable_path/..

@@ -1,0 +1,18 @@
+1. 在wxWidgets 的根目录下创建build-mac文件夹
+2. 终端cd到该文件夹下输入以下配置：
+../configure --with-cocoa --without-subdirs --with-macosx-version-min=10.9 --with-macosx-sdk=/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.13.sdk CXXFLAGS="-stdlib=libc++ -std=c++11" OBJCXXFLAGS="-stdlib=libc++ -std=c++11" CPPFLAGS="-stdlib=libc++" LDFLAGS="-stdlib=libc++" CXX=clang++ CXXCPP="clang++ -E" CC=clang CPP="clang -E" --enable-debug --disable-shared --without-liblzma
+如果生成release版本的库的话将 —-enable-debug选项去掉 如果想生成动态库话，将 —disable-shared选项去掉
+
+3. 创建wxWidgets的xcode项目参看xcodeCreate_wxWidgets_Project.txt文档
+
+CPPFLAGS=-D__ASSERT_MACROS_DEFINE_VERSIONS_WITHOUT_UNDERSCORES=1
+
+../configure --with-cocoa --without-subdirs --with-macosx-version-min=10.12 --with-macosx-sdk=/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.13.sdk CXXFLAGS="-stdlib=libc++ -std=c++11" OBJCXXFLAGS="-stdlib=libc++ -std=c++11" CPPFLAGS="-stdlib=libc++ -D__ASSERT_MACROS_DEFINE_VERSIONS_WITHOUT_UNDERSCORES=1" LDFLAGS="-stdlib=libc++" CXX=clang++ CXXCPP="clang++ -E" CC=clang CPP="clang -E" --enable-debug --disable-shared --without-liblzma --disable-qtkit --with-expat
+
+../configure --with-cocoa --without-subdirs --with-macosx-version-min=10.9 --with-macosx-sdk=/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.13.sdk CXXFLAGS="-stdlib=libc++ -std=c++11" OBJCXXFLAGS="-stdlib=libc++ -std=c++11" CPPFLAGS="-stdlib=libc++ -D__ASSERT_MACROS_DEFINE_VERSIONS_WITHOUT_UNDERSCORES=1" LDFLAGS="-stdlib=libc++" CXX=clang++ CXXCPP="clang++ -E" CC=clang CPP="clang -E" 
+
+
+
+libwx_baseu_net-3.0.alibwx_baseu_xml-3.0.alibwx_baseu-3.0.alibwx_osx_cocoau_adv-3.0.alibwx_osx_cocoau_aui-3.0.alibwx_osx_cocoau_core-3.0.alibwx_osx_cocoau_gl-3.0.alibwx_osx_cocoau_html-3.0.alibwx_osx_cocoau_media-3.0.alibwx_osx_cocoau_propgrid-3.0.alibwx_osx_cocoau_qa-3.0.alibwx_osx_cocoau_ribbon-3.0.alibwx_osx_cocoau_richtext-3.0.alibwx_osx_cocoau_stc-3.0.alibwx_osx_cocoau_webview-3.0.alibwx_osx_cocoau_xrc-3.0.alibwxjpeg-3.0.alibwxpng-3.0.alibwxregexu-3.0.alibwxscintilla-3.0.alibwxtiff-3.0.a
+
+libwx_baseu_net-3.0.0.4.0.dyliblibwx_baseu_xml-3.0.0.4.0.dyliblibwx_baseu-3.0.0.4.0.dyliblibwx_osx_cocoau_adv-3.0.0.4.0.dyliblibwx_osx_cocoau_aui-3.0.0.4.0.dyliblibwx_osx_cocoau_core-3.0.0.4.0.dyliblibwx_osx_cocoau_gl-3.0.0.4.0.dyliblibwx_osx_cocoau_html-3.0.0.4.0.dyliblibwx_osx_cocoau_media-3.0.0.4.0.dyliblibwx_osx_cocoau_propgrid-3.0.0.4.0.dyliblibwx_osx_cocoau_qa-3.0.0.4.0.dyliblibwx_osx_cocoau_ribbon-3.0.0.4.0.dyliblibwx_osx_cocoau_richtext-3.0.0.4.0.dyliblibwx_osx_cocoau_stc-3.0.0.4.0.dyliblibwx_osx_cocoau_webview-3.0.0.4.0.dyliblibwx_osx_cocoau_xrc-3.0.0.4.0.dyliblibwxjpeg-3.0.alibwxpng-3.0.alibwxregexu-3.0.alibwxscintilla-3.0.alibwxtiff-3.0.a

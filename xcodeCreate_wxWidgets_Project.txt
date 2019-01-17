@@ -1,0 +1,28 @@
+1.xcode创建一个Cocoa Application项目，可以将项目中的所有文件全删除掉
+
+2.在wxWidgets的samples里的minimal项目以下几个文件拖到上一步新建的项目中
+wxcocoa.xcconfig
+wxdebug.xcconfig
+wxrelease.xcconfig
+Info_cocoa.plist
+minimal.cpp
+
+3.选择PROJECT里面的项目名，右边区域选info->Configurations,其中Debug下项目选择wxdebug／TARGETS选择wxcocoa   Release下项目选择wxrelease／TARGETS选择wxcocoa
+
+4.依次点击TARGETS->Build Phases->Link Binary With Libraries，将编译好的wx库拖拽到该条目下
+
+5.选择项目在右边区域Build Settings下找到Packaging里的info.plist File 在该条目后面填入Info_cocoa.plist（该文件就是第二步拖过来的，wiki里面的是Summary选项，xcode8压根就没有该选项）
+
+6.TARGETS->Build Settings 在选项卡下面一排一个➕号点击添加自定义项命名为WXROOT，后面的值填wx源码的根目录例如：/Users/eims/work/wxWidgets-master，再添加一项命名为WXPLATFORM后面的值填__WXOSX_$(WXTOOLKITUPPER)__
+  添加一个自定义条目为LIBPATH填入如下值$(WXROOT)/mac_build_release/lib（这个是库的路径）
+
+7.a.和上一步同一个界面下找到Header Search Paths下面添加$(WXROOT)/build/osx/setup/cocoa/include和$(WXROOT)/include，如果没有使用sample.xpm,这一步可以不添加图标的路径($(WXROOT)/samples/minimal)
+  添加lib库的搜索路径，Library Search Paths下填入$(LIBPATH)
+  b.在Prefix header后面添加$(WXROOT)/include/wx/wxprec.h
+  c.C Langage Dialect ／ C++ Langage Dialect ／ C++ Standard Library这三项设置为“Compiler Default”
+  d.Base SDK 选择本地电脑的系统版本，“other linker flags” 填入 “$(OTHER_LDFLAGS) -lz”
+  e.添加自定义项WX_PREPROCESSOR_DEFINITIONS  填入如下内容
+WXBUILDING $(WXPLATFORM) __WX__ _FILE_OFFSET_BITS=64 _LARGE_FILES MACOS_CLASSIC __WXMAC_XCODE__=1 SCI_LEXER NO_CXX11_REGEX WX_PRECOMP=1 wxUSE_UNICODE_UTF8=0 wxUSE_UNICODE_WCHAR=1 _WCHAR_H_CPLUSPLUS_98_CONFORMANCE_
+然后在Preprocessor Macros后面填入$(WX_PREPROCESSOR_DEFINITIONS)
+8.Always search user paths的值改为yes，如果wx没有安装到系统中还要加入库的搜索路径修改Library Search Paths的值
+
